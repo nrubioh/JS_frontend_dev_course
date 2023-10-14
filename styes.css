@@ -451,10 +451,9 @@ aside {
         height: 140px;
     }
     
-    #product-detail {
+    #product-detail, #trolly-detail {
         width: 100%;
     }
-
 }
 
 @media (min-width: 641px) {

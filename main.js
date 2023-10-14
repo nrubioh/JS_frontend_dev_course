@@ -9,20 +9,28 @@ const product_menu = document.getElementById('product-detail');
 
 const cards_container = document.querySelector('.cards-container');
 
+const trolly_detail = document.getElementById('trolly-detail');
+const trolly_detail_close = document.getElementById('trolly-detail-close');
+
 nav_email.addEventListener('click', toggleDesktopMenu);
 threeLinesIcon.addEventListener('click', toggleMobileMenu);
 shopIcon.addEventListener('click', toggleProductMenu);
+trolly_detail_close.addEventListener('click', close_aside_trolly_detail);
 
 function toggleDesktopMenu() {
     desktop_menu.classList.toggle('inactive');
     console.log('click');
     product_menu.classList.add('inactive');
+
+    trolly_detail.classList.add('inactive')
 }
 
 function toggleMobileMenu() {
     mobile_menu.classList.toggle('inactive');
     console.log('mobile click');
     product_menu.classList.add('inactive');
+
+    trolly_detail.classList.add('inactive')
 }
 
 function toggleProductMenu() {
@@ -30,6 +38,21 @@ function toggleProductMenu() {
     console.log('Product menu click');
     desktop_menu.classList.add('inactive');
     mobile_menu.classList.add('inactive');
+
+    trolly_detail.classList.add('inactive')
+}
+
+function open_aside_trolly_detail() {
+    trolly_detail.classList.remove('inactive')
+    
+    product_menu.classList.add('inactive');
+    console.log('Trolly detail click');
+    desktop_menu.classList.add('inactive');
+    mobile_menu.classList.add('inactive');
+}
+
+function close_aside_trolly_detail() {
+    trolly_detail.classList.add('inactive'); //to inactive the bigOne
 }
 
 const product_list = [];
@@ -72,17 +95,17 @@ for (const product in product_list) {
 } */
 
 function renderProducts(arr) {
-/*  div class="product-card">
+/*  <div class="product-card">
         <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-            <div class="product-info">
-                <div>
-                    <p>$120,00</p>
-                    <p>Bike</p>
-                </div>
-                <figure>
-                    <img src="./icons/bt_add_to_cart.svg" alt="">
-                </figure>
+        <div class="product-info">
+            <div>
+                <p>$120,00</p>
+                <p>Bike</p>
             </div>
+            <figure>
+                <img src="./icons/bt_add_to_cart.svg" alt="">
+            </figure>
+        </div>
     </div>*/
     for (const product of arr) {
         const divProductCard = document.createElement('div');
@@ -90,7 +113,9 @@ function renderProducts(arr) {
     
         const imgProduct = document.createElement('img');
             imgProduct.setAttribute('src', product.image);
-    
+    /* product.image -> click , open aside, trolly-detail */
+            imgProduct.addEventListener('click', open_aside_trolly_detail);
+
         const divProductInfo = document.createElement('div');
             divProductInfo.classList.add('product-info');
         
