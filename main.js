@@ -5,7 +5,7 @@ const threeLinesIcon = document.querySelector('.menu');
 const mobile_menu = document.querySelector('.mobile-menu');
 
 const shopIcon = document.querySelector('.navbar-shopping-cart');
-const product_menu = document.querySelector('.product-detail');
+const product_menu = document.getElementById('product-detail');
 
 const cards_container = document.querySelector('.cards-container');
 
